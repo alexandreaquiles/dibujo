@@ -1,161 +1,137 @@
 package dibujo;
 
-import dibujo.asserts.AssertDrawings;
+import dibujo.support.DibujoTests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
 
-class LineTests {
-
-    private Canvas fourByThreeCanvas;
+class LineTests extends DibujoTests {
 
     @BeforeEach
     void setUp() {
-        fourByThreeCanvas = new Canvas(4, 3);
+        run("C 4 3");
     }
 
     @Test
     void shouldCreateNewHorizontalLine() {
-        fourByThreeCanvas.createNewLine(1, 2, 3, 2);
-
-        Position[][] expectedPositions = new Position[][]{
-                {new Position(1, 1), new Position(2, 1), new Position(3, 1), new Position(4, 1)},
-                {new Position(1, 2).fill(), new Position(2, 2).fill(), new Position(3, 2).fill(), new Position(4, 2)},
-                {new Position(1, 3), new Position(2, 3), new Position(3, 3), new Position(4, 3)},
-        };
-
-        AssertDrawings.assertPositions(expectedPositions, fourByThreeCanvas);
+        run("L 1 2 3 2");
+        assertThat(result()).contains("------\n" +
+                                      "|    |\n" +
+                                      "|xxx |\n" +
+                                      "|    |\n" +
+                                      "------");
+        assertThat(errors()).isEmpty();
     }
 
     @Test
     void shouldCreateNewVerticalLine() {
-        fourByThreeCanvas.createNewLine(2, 1, 2, 2);
-
-        Position[][] expectedPositions = new Position[][]{
-                {new Position(1, 1), new Position(2, 1).fill(), new Position(3, 1), new Position(4, 1)},
-                {new Position(1, 2), new Position(2, 2).fill(), new Position(3, 2), new Position(4, 2)},
-                {new Position(1, 3), new Position(2, 3), new Position(3, 3), new Position(4, 3)},
-        };
-
-        AssertDrawings.assertPositions(expectedPositions, fourByThreeCanvas);
+        run("L 2 1 2 2");
+        assertThat(result()).contains("------\n" +
+                                      "| x  |\n" +
+                                      "| x  |\n" +
+                                      "|    |\n" +
+                                      "------");
+        assertThat(errors()).isEmpty();
     }
 
     @Test
-    void shouldCreateNewHorizontallLineInTheLastColumn() {
-        fourByThreeCanvas.createNewLine(4, 2, 4, 3);
-
-        Position[][] expectedPositions = new Position[][]{
-                {new Position(1, 1), new Position(2, 1), new Position(3, 1), new Position(4, 1)},
-                {new Position(1, 2), new Position(2, 2), new Position(3, 2), new Position(4, 2).fill()},
-                {new Position(1, 3), new Position(2, 3), new Position(3, 3), new Position(4, 3).fill()},
-        };
-
-        AssertDrawings.assertPositions(expectedPositions, fourByThreeCanvas);
+    void shouldCreateNewHorizontalLineInTheLastColumn() {
+        run("L 4 2 4 3");
+        assertThat(result()).contains("------\n" +
+                                      "|    |\n" +
+                                      "|   x|\n" +
+                                      "|   x|\n" +
+                                      "------");
+        assertThat(errors()).isEmpty();
     }
 
     @Test
     void shouldCreateNewVerticalLineInTheLastRow() {
-        fourByThreeCanvas.createNewLine(1, 3, 2, 3);
-
-        Position[][] expectedPositions = new Position[][]{
-                {new Position(1, 1), new Position(2, 1), new Position(3, 1), new Position(4, 1)},
-                {new Position(1, 2), new Position(2, 2), new Position(3, 2), new Position(4, 2)},
-                {new Position(1, 3).fill(), new Position(2, 3).fill(), new Position(3, 3), new Position(4, 3)},
-        };
-
-        AssertDrawings.assertPositions(expectedPositions, fourByThreeCanvas);
+        run("L 1 3 2 3");
+        assertThat(result()).contains("------\n" +
+                                      "|    |\n" +
+                                      "|    |\n" +
+                                      "|xx  |\n" +
+                                      "------");
+        assertThat(errors()).isEmpty();
     }
 
     @Test
     void startingHorizontalCoordinateShouldNotBeOffLimits() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(999, 1, 2, 2);
-        });
+        run("L 999 1 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void startingVerticalCoordinateShouldNotBeOffLimits() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 999, 2, 2);
-        });
+        run("L 2 999 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingHorizontalCoordinateShouldNotBeOffLimits() {
-        assertThrows(RuntimeException.class, () -> {
-
-            fourByThreeCanvas.createNewLine(2, 1, 999, 2);
-        });
+        run("L 2 1 999 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingVerticalCoordinateShouldNotBeOffLimits() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 1, 2, 999);
-        });
+        run("L 2 1 2 999");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void startingHorizontalCoordinateShouldNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(0, 1, 2, 2);
-        });
+        run("L 0 1 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void startingVerticalCoordinateShouldNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 0, 2, 2);
-        });
+        run("L 2 0 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingHorizontalCoordinateShouldNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 1, 0, 2);
-        });
+        run("L 2 1 0 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingVerticalCoordinateShouldNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 1, 2, 0);
-        });
+        run("L 2 1 2 0");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void startingHorizontalCoordinateShouldNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(-2, 1, 2, 2);
-        });
+        run("L -2 1 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void startingVerticalCoordinateShouldNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, -1, 2, 2);
-        });
+        run("L 2 -1 2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingHorizontalCoordinateShouldNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 1, -2, 2);
-        });
+        run("L 2 1 -2 2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void endingVerticalCoordinateShouldNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(2, 1, 2, -2);
-        });
+        run("L 2 1 2 -2");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
     void diagonalLinesCurrentlyNotSupported() {
-        assertThrows(RuntimeException.class, () -> {
-            fourByThreeCanvas.createNewLine(1, 1, 3, 3);
-        });
+        run("L 1 1 3 3");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 }

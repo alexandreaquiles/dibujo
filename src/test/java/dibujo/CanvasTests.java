@@ -1,56 +1,76 @@
 package dibujo;
 
+import dibujo.support.DibujoTests;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
 
-class CanvasTests {
+class CanvasTests extends DibujoTests {
 
     @Test
-    public void shouldCreateNewCanvasWithGivenWidthAndHeight() {
-        int width = 20;
-        int height = 4;
-        Canvas canvas = new Canvas(width, height);
-
-        assertEquals(20, canvas.getWidth());
-        assertEquals(4, canvas.getHeight());
+    void shouldCreateNewCanvasWithGivenWidthAndHeight() {
+        run("C 20 4");
+        assertThat(result()).contains("----------------------\n" +
+                                      "|                    |\n" +
+                                      "|                    |\n" +
+                                      "|                    |\n" +
+                                      "|                    |\n" +
+                                      "----------------------");
+        assertThat(errors()).isEmpty();
     }
 
     @Test
-    void canvasWidthShoulNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            int width = -20;
-            int height = 4;
-            new Canvas(width, height);
-        });
+    void dimensionsAreRequired() {
+        run("C");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
-    void canvasWidthShoulNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            int width = 0;
-            int height = 4;
-            new Canvas(width, height);
-        });
+    void heightIsRequired() {
+        run("C 20");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
-    void canvasHeightShoulNotBeNegative() {
-        assertThrows(RuntimeException.class, () -> {
-            int width = 20;
-            int height = -4;
-            new Canvas(width, height);
-        });
+    void widthShouldNotBeZero() {
+        run("C 0 4");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
     @Test
-    void canvasHeightShoulNotBeZero() {
-        assertThrows(RuntimeException.class, () -> {
-            int width = 20;
-            int height = 0;
-            new Canvas(width, height);
-        });
+    void heightShouldNotBeZero() {
+        run("C 20 0");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
+    }
+
+    @Test
+    void widthShouldNotBeNegative() {
+        run("C -20 4");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
+     }
+
+    @Test
+    void heightShouldNotBeNegative() {
+        run("C 20 -4");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
+     }
+
+    @Test
+    void widthShouldBeNumeric() {
+        run("C w 4");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
+    }
+
+    @Test
+    void heightShouldBeNumeric() {
+        run("C 20 w");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
+    }
+
+    @Test
+    void shouldNotHaveAnythingAfterTheHeight() {
+        run("C 20 4 hello");
+        assertThat(errors()).containsIgnoringCase("Invalid parameters");
     }
 
 }
