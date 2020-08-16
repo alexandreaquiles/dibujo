@@ -22,7 +22,7 @@ public class RectangleTests extends DibujoTests {
                                       "| x  x |\n" +
                                       "| xxxx |\n" +
                                       "|      |\n" +
-                                      "--------");
+                                      "--------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -35,7 +35,7 @@ public class RectangleTests extends DibujoTests {
                                       "|xx    |\n" +
                                       "|xx    |\n" +
                                       "|xx    |\n" +
-                                      "--------");
+                                      "--------\n");
         assertThat(errors()).isEmpty();
     }
 

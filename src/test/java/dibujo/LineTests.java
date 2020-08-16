@@ -20,7 +20,7 @@ class LineTests extends DibujoTests {
                                       "|    |\n" +
                                       "|xxx |\n" +
                                       "|    |\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -31,7 +31,7 @@ class LineTests extends DibujoTests {
                                       "| x  |\n" +
                                       "| x  |\n" +
                                       "|    |\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -42,7 +42,7 @@ class LineTests extends DibujoTests {
                                       "|    |\n" +
                                       "|   x|\n" +
                                       "|   x|\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -53,7 +53,7 @@ class LineTests extends DibujoTests {
                                       "|    |\n" +
                                       "|    |\n" +
                                       "|xx  |\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 

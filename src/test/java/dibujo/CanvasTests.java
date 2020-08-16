@@ -15,7 +15,7 @@ class CanvasTests extends DibujoTests {
                                       "|                    |\n" +
                                       "|                    |\n" +
                                       "|                    |\n" +
-                                      "----------------------");
+                                      "----------------------\n");
         assertThat(errors()).isEmpty();
     }
 

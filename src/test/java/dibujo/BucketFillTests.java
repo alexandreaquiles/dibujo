@@ -20,7 +20,7 @@ public class BucketFillTests extends DibujoTests {
                                       "|oooo|\n" +
                                       "|oooo|\n" +
                                       "|oooo|\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -33,7 +33,7 @@ public class BucketFillTests extends DibujoTests {
                                       "|oooo|\n" +
                                       "|ooox|\n" +
                                       "|xxox|\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
@@ -45,7 +45,7 @@ public class BucketFillTests extends DibujoTests {
                                       "|xxxo|\n" +
                                       "|x xo|\n" +
                                       "|xxxo|\n" +
-                                      "------");
+                                      "------\n");
         assertThat(errors()).isEmpty();
     }
 
