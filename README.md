@@ -4,15 +4,15 @@ Dibujo é uma versão em linha de comando (CLI) de um programa de desenho.
 
 ## Comandos
 
-O usuário pode realiar os seguintes comandos:
+O usuário pode realizar os seguintes comandos:
 
 - `C w h`, que cria um canvas de `w` posições por `h` posições, onde `w` é _width_ (largura) e `h` é `height` (altura).
-- `L xS yS xE yE`, que cria uma linha iniciando na posição (xS, yS) e terminando na posição (xE, yE), onde `S` é _Start_ (início) e `E` é _End_ (fim). A linha é representada no canvas com o caracter `x`. Só há suporte a linhas horizontais, em que `yS` é igual a `yE`, e linhas verticais, em que `xS` é igual a `yE`.
-- `R xULC yULC xLRC yLRC`, que cria um retângulo iniciando na posição (xULC, yULC) e terminando na posição (xLRC, yLRC), onde `ULC` é _Upper Left Corner_ (canto superior esquerdo) e `LRC` é _Lower Right Corner_ (canto inferior direito). O retângulo é "oco", não contendo nenhum caracter dentro, e seus limites são representados no canvas com o caracter `x`.
+- `L xS yS xE yE`, que cria uma linha iniciando na posição (xS, yS) e terminando na posição (xE, yE), onde `S` é _Start_ (início) e `E` é _End_ (fim). A linha é representada no canvas com o caracter `x`. Só há suporte a linhas horizontais, em que `yS` é igual a `yE`, e linhas verticais, em que `xS` é igual a `xE`.
+- `R xULC yULC xLRC yLRC`, que cria um retângulo iniciando na posição (xULC, yULC) e terminando na posição (xLRC, yLRC), onde `ULC` é _Upper Left Corner_ (canto superior esquerdo) e `LRC` é _Lower Right Corner_ (canto inferior direito). O retângulo é "oco", não contendo nenhum caractere dentro, e seus limites são representados no canvas com o caracter `x`.
 - `B x y c`, que preenche todas as posições adjacentes à posição (x, y) com a "cor" `c`, até que haja alguma barreira como: uma linha, um retângulo ou o fim do canvas.
 - `Q`, que finaliza o programa.
 
-É impresso `enter command:` ao iniciar o programa e também depois do resultado de cada comando.
+Ao iniciar o programa, e também depois do resultado de cada comando, é impresso `enter command:`.
 
 ## Exemplo de uso
 
