@@ -1,6 +1,6 @@
 package dibujo.support;
 
-import dibujo.cli.Main;
+import dibujo.Main;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.ByteArrayInputStream;
