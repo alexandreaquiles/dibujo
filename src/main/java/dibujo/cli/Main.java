@@ -24,8 +24,8 @@ public class Main {
                 try {
 
                     Command command = Commands.getCommandByLine(line);
-
-                    canvas = command.execute(new CommandParameters(out, err, line, this.canvas));
+                    CommandParameters commandParameters = new CommandParameters(out, err, line, canvas);
+                    canvas = command.execute(commandParameters);
 
                     String text = canvasAsText.draw(canvas);
                     out.print(text);

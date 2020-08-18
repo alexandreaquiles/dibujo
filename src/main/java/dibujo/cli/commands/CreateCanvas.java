@@ -15,7 +15,9 @@ public class CreateCanvas implements Command {
 
     @Override
     public Canvas execute(CommandParameters commandParameters) {
-        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+)$").matcher(commandParameters.getLine());
+        String line = commandParameters.getLine();
+
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+)$").matcher(line);
         if (matcher.find()) {
             int width = Integer.parseInt(matcher.group(1));
             int height = Integer.parseInt(matcher.group(2));

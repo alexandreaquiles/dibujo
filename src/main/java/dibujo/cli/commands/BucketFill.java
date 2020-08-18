@@ -15,21 +15,24 @@ public class BucketFill implements Command {
 
     @Override
     public Canvas execute(CommandParameters commandParameters) {
-        if (commandParameters.getCanvas() == null) {
+        Canvas canvas = commandParameters.getCanvas();
+        String line = commandParameters.getLine();
+
+        if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");
         }
 
-        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\w+)$").matcher(commandParameters.getLine());
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\w+)$").matcher(line);
         if (matcher.find()) {
             int startingX = Integer.parseInt(matcher.group(1));
             int startingY = Integer.parseInt(matcher.group(2));
             String colorCharacter = matcher.group(3);
 
             dibujo.core.BucketFill bucketFill = new dibujo.core.BucketFill(startingX, startingY, colorCharacter);
-            bucketFill.fillIn(commandParameters.getCanvas());
+            bucketFill.fillIn(canvas);
         } else {
             throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");
         }
-        return commandParameters.getCanvas();
+        return canvas;
     }
 }
