@@ -5,11 +5,11 @@ import java.util.List;
 public class Commands {
 
    private static final List<Command> COMMANDS = List.of(
-            new CreateCanvas(),
-            new CreateLine(),
-            new CreateRectangle(),
-            new BucketFill(),
-            new Quit());
+            new CreateCanvasCommand(),
+            new CreateLineCommand(),
+            new CreateRectangleCommand(),
+            new BucketFillCommand(),
+            new QuitCommand());
 
     public static Command getCommandByLine(String line) {
         return COMMANDS.stream().filter(c -> c.accept(line))

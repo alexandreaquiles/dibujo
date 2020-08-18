@@ -1,11 +1,12 @@
 package dibujo.cli.commands;
 
+import dibujo.core.BucketFill;
 import dibujo.core.Canvas;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BucketFill implements Command {
+public class BucketFillCommand implements Command {
     private static final String CODE = "B";
 
     @Override
@@ -28,7 +29,7 @@ public class BucketFill implements Command {
             int startingY = Integer.parseInt(matcher.group(2));
             String colorCharacter = matcher.group(3);
 
-            dibujo.core.BucketFill bucketFill = new dibujo.core.BucketFill(startingX, startingY, colorCharacter);
+            BucketFill bucketFill = new BucketFill(startingX, startingY, colorCharacter);
             bucketFill.fillIn(canvas);
         } else {
             throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");

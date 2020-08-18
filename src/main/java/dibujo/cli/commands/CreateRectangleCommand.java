@@ -6,7 +6,7 @@ import dibujo.core.Rectangle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateRectangle implements Command {
+public class CreateRectangleCommand implements Command {
     private static final String CODE = "R";
 
     @Override

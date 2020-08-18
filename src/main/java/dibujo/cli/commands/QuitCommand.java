@@ -2,7 +2,7 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
-public class Quit implements Command {
+public class QuitCommand implements Command {
     private static final String CODE = "Q";
 
     @Override

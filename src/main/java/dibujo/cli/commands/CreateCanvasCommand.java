@@ -5,7 +5,7 @@ import dibujo.core.Canvas;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateCanvas implements Command {
+public class CreateCanvasCommand implements Command {
     private static final String CODE = "C";
 
     @Override

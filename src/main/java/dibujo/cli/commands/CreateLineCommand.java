@@ -6,7 +6,7 @@ import dibujo.core.Line;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateLine implements Command {
+public class CreateLineCommand implements Command {
     private static final String CODE = "L";
 
     @Override
