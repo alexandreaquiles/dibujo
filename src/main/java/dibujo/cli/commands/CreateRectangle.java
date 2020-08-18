@@ -6,9 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateRectangle {
-    public static final String CREATE_RECTANGLE = "R";
+    private static final String CREATE_RECTANGLE = "R";
 
-    public CreateRectangle() {
+    public boolean accept(String line) {
+        return line.startsWith(CREATE_RECTANGLE);
     }
 
     public void createRectangle(String line, Canvas canvas) {

@@ -7,9 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BucketFill {
-    public static final String BUCKET_FILL = "B";
+    private static final String BUCKET_FILL = "B";
 
-    public BucketFill() {
+    public boolean accept(String line) {
+        return line.startsWith(BUCKET_FILL);
     }
 
     public void bucketFill(String line, Canvas canvas) {

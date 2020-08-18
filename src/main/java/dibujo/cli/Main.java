@@ -27,15 +27,15 @@ public class Main {
                 String line = scanner.nextLine();
                 try {
 
-                    if (line.startsWith(CreateCanvas.CREATE_CANVAS)) {
+                    if (createCanvas.accept(line)) {
                         canvas = createCanvas.createCanvas(line);
-                    } else if (line.startsWith(CreateLine.CREATE_LINE)) {
+                    } else if (createLine.accept(line)) {
                         createLine.createLine(line, this.canvas);
-                    } else if (line.startsWith(CreateRectangle.CREATE_RECTANGLE)) {
+                    } else if (createRectangle.accept(line)) {
                         createRectangle.createRectangle(line, this.canvas);
-                    } else if (line.startsWith(BucketFill.BUCKET_FILL)) {
+                    } else if (bucketFill.accept(line)) {
                         bucketFill.bucketFill(line, this.canvas);
-                    } else if (line.startsWith(Quit.QUIT)) {
+                    } else if (quit.accept(line)) {
                         quit.quit(out);
                     } else {
                         err.println("Invalid command: " + line + "\n");

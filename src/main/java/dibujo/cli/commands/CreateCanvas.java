@@ -6,9 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateCanvas {
-    public static final String CREATE_CANVAS = "C";
+    private static final String CREATE_CANVAS = "C";
 
-    public CreateCanvas() {
+    public boolean accept(String line) {
+        return line.startsWith(CREATE_CANVAS);
     }
 
     public Canvas createCanvas(String line) {

@@ -6,9 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateLine {
-    public static final String CREATE_LINE = "L";
+    private static final String CREATE_LINE = "L";
 
-    public CreateLine() {
+    public boolean accept(String line) {
+        return line.startsWith(CREATE_LINE);
     }
 
     public void createLine(String line, Canvas canvas) {
