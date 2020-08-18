@@ -33,15 +33,15 @@ public class Main {
 
                     } else if (createLine.accept(line)) {
 
-                        createLine.execute(line, this.canvas);
+                        createLine.execute(out, err, line, this.canvas);
 
                     } else if (createRectangle.accept(line)) {
 
-                        createRectangle.execute(line, this.canvas);
+                        createRectangle.execute(out, err, line, this.canvas);
 
                     } else if (bucketFill.accept(line)) {
 
-                        bucketFill.execute(line, this.canvas);
+                        bucketFill.execute(out, err, line, this.canvas);
 
                     } else if (quit.accept(line)) {
 

@@ -2,6 +2,7 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
+import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,7 @@ public class CreateRectangle implements Command {
     }
 
     @Override
-    public void execute(String line, Canvas canvas) {
+    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new rectangle.");
         }
@@ -30,5 +31,6 @@ public class CreateRectangle implements Command {
         } else {
             throw new RuntimeException("Invalid parameters for the create new rectangle command. Should be: L <upper left corner x> <upper left corner y> <lower right corner x> <lower right corner y>");
         }
+        return canvas;
     }
 }

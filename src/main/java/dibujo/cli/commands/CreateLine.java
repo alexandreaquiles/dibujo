@@ -2,6 +2,7 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
+import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,7 @@ public class CreateLine implements Command {
     }
 
     @Override
-    public void execute(String line, Canvas canvas) {
+    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new line.");
         }
@@ -29,5 +30,6 @@ public class CreateLine implements Command {
         } else {
             throw new RuntimeException("Invalid parameters for the create new line command. Should be: L <starting x> <starting y> <ending x> <ending y>");
         }
+        return canvas;
     }
 }
