@@ -35,7 +35,7 @@ public class Main {
                         err.println("Invalid command: " + line + "\n");
                     }
 
-                    canvas.draw(out, this);
+                    canvas.draw(out);
 
                     out.print("\nenter command: ");
 

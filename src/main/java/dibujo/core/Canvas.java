@@ -1,7 +1,5 @@
 package dibujo.core;
 
-import dibujo.cli.Main;
-
 import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Set;
@@ -120,7 +118,7 @@ public class Canvas {
         fill(positionToFill.left(), fillColor, visited);
     }
 
-    public void draw(PrintStream out, Main main) {
+    public void draw(PrintStream out) {
         out.println();
 
         for (int i = 0; i <= getWidth(); i++) {
