@@ -50,6 +50,7 @@ public class Main {
     private void draw(PrintStream out) {
         out.println();
 
+        Canvas canvas = this.canvas;
         for (int i = 0; i <= canvas.getWidth(); i++) {
             out.print("-");
         }
