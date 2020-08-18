@@ -5,13 +5,15 @@ import dibujo.core.Canvas;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateRectangle {
+public class CreateRectangle implements Command {
     private static final String CREATE_RECTANGLE = "R";
 
+    @Override
     public boolean accept(String line) {
         return line.startsWith(CREATE_RECTANGLE);
     }
 
+    @Override
     public void execute(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new rectangle.");
