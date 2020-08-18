@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateRectangle {
+    public static final String CREATE_RECTANGLE = "R";
+
     public CreateRectangle() {
     }
 

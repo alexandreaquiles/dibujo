@@ -10,12 +10,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final String CREATE_CANVAS = "C";
-    public static final String CREATE_LINE = "L";
-    public static final String CREATE_RECTANGLE = "R";
-    public static final String BUCKET_FILL = "B";
-    public static final String QUIT = "Q";
-
     private final CanvasAsText canvasAsText = new CanvasAsText();
 
     private final Quit quit = new Quit();
@@ -33,15 +27,15 @@ public class Main {
                 String line = scanner.nextLine();
                 try {
 
-                    if (line.startsWith(CREATE_CANVAS)) {
+                    if (line.startsWith(CreateCanvas.CREATE_CANVAS)) {
                         canvas = createCanvas.createCanvas(line);
-                    } else if (line.startsWith(CREATE_LINE)) {
+                    } else if (line.startsWith(CreateLine.CREATE_LINE)) {
                         createLine.createLine(line, this.canvas);
-                    } else if (line.startsWith(CREATE_RECTANGLE)) {
+                    } else if (line.startsWith(CreateRectangle.CREATE_RECTANGLE)) {
                         createRectangle.createRectangle(line, this.canvas);
-                    } else if (line.startsWith(BUCKET_FILL)) {
+                    } else if (line.startsWith(BucketFill.BUCKET_FILL)) {
                         bucketFill.bucketFill(line, this.canvas);
-                    } else if (line.startsWith(QUIT)) {
+                    } else if (line.startsWith(Quit.QUIT)) {
                         quit.quit(out);
                     } else {
                         err.println("Invalid command: " + line + "\n");

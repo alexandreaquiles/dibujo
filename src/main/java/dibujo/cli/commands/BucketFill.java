@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BucketFill {
+    public static final String BUCKET_FILL = "B";
+
     public BucketFill() {
     }
 

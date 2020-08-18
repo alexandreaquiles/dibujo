@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateLine {
+    public static final String CREATE_LINE = "L";
+
     public CreateLine() {
     }
 
