@@ -12,7 +12,7 @@ public class CreateRectangle {
         return line.startsWith(CREATE_RECTANGLE);
     }
 
-    public void createRectangle(String line, Canvas canvas) {
+    public void execute(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new rectangle.");
         }

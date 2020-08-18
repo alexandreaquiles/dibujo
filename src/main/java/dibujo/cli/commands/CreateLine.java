@@ -12,7 +12,7 @@ public class CreateLine {
         return line.startsWith(CREATE_LINE);
     }
 
-    public void createLine(String line, Canvas canvas) {
+    public void execute(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new line.");
         }

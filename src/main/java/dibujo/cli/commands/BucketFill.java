@@ -13,7 +13,7 @@ public class BucketFill {
         return line.startsWith(BUCKET_FILL);
     }
 
-    public void bucketFill(String line, Canvas canvas) {
+    public void execute(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");
         }

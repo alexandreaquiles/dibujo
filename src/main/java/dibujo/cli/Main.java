@@ -28,15 +28,25 @@ public class Main {
                 try {
 
                     if (createCanvas.accept(line)) {
+
                         canvas = createCanvas.createCanvas(line);
+
                     } else if (createLine.accept(line)) {
-                        createLine.createLine(line, this.canvas);
+
+                        createLine.execute(line, this.canvas);
+
                     } else if (createRectangle.accept(line)) {
-                        createRectangle.createRectangle(line, this.canvas);
+
+                        createRectangle.execute(line, this.canvas);
+
                     } else if (bucketFill.accept(line)) {
-                        bucketFill.bucketFill(line, this.canvas);
+
+                        bucketFill.execute(line, this.canvas);
+
                     } else if (quit.accept(line)) {
+
                         quit.quit(out);
+
                     } else {
                         err.println("Invalid command: " + line + "\n");
                     }
