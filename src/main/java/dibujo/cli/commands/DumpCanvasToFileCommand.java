@@ -1,6 +1,6 @@
 package dibujo.cli.commands;
 
-import dibujo.cli.out.CanvasAsText;
+import dibujo.cli.output.CanvasAsText;
 import dibujo.core.Canvas;
 
 import java.io.FileOutputStream;
