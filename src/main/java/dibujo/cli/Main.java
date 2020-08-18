@@ -26,7 +26,8 @@ public class Main {
 
                     canvas = command.execute(out, err, line, this.canvas);
 
-                    canvasAsText.draw(out, canvas);
+                    String text = canvasAsText.draw(canvas);
+                    out.print(text);
 
                     out.print("\nenter command: ");
 
