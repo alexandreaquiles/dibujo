@@ -9,6 +9,7 @@ public class Commands {
             new CreateLineCommand(),
             new CreateRectangleCommand(),
             new BucketFillCommand(),
+            new DumpCanvasToFileCommand(),
             new QuitCommand());
 
     public static Command getCommandByLine(String line) {
