@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DumpCanvasToImage implements Command {
+public class DumpCanvasToImageCommand implements Command {
     private static final String DUMP_TO_IMAGE = "I";
 
     @Override
@@ -16,7 +16,10 @@ public class DumpCanvasToImage implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
+    public Canvas execute(CommandParameters commandParameters) {
+        Canvas canvas = commandParameters.getCanvas();
+        String line = commandParameters.getLine();
+
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before dumping it.");
         }
