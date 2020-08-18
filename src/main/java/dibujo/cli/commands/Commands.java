@@ -10,6 +10,7 @@ public class Commands {
             new CreateRectangleCommand(),
             new BucketFillCommand(),
             new DumpCanvasToFileCommand(),
+            new DumpCanvasToImage(),
             new QuitCommand());
 
     public static Command getCommandByLine(String line) {

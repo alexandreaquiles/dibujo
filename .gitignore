@@ -214,3 +214,5 @@ nbdist/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,code-java,intellij+all,eclipse,netbeans,maven
 *.txt
+*.jpg
+*.png
