@@ -6,13 +6,15 @@ import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateCanvas {
+public class CreateCanvas implements Command {
     private static final String CREATE_CANVAS = "C";
 
+    @Override
     public boolean accept(String line) {
         return line.startsWith(CREATE_CANVAS);
     }
 
+    @Override
     public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
         Matcher matcher = Pattern.compile("^C (\\d+) (\\d+)$").matcher(line);
         if (matcher.find()) {

@@ -12,11 +12,11 @@ public class Main {
 
     private final CanvasAsText canvasAsText = new CanvasAsText();
 
-    private final Quit quit = new Quit();
+    private final Command quit = new Quit();
     private final Command createLine = new CreateLine();
     private final Command createRectangle = new CreateRectangle();
     private final Command bucketFill = new BucketFill();
-    private final CreateCanvas createCanvas = new CreateCanvas();
+    private final Command createCanvas = new CreateCanvas();
 
     private Canvas canvas;
 
