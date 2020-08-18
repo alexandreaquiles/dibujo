@@ -1,4 +1,4 @@
-package dibujo;
+package dibujo.core;
 
 public class Position {
 

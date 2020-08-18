@@ -1,4 +1,7 @@
-package dibujo;
+package dibujo.cli;
+
+import dibujo.core.Canvas;
+import dibujo.core.Position;
 
 import java.io.InputStream;
 import java.io.PrintStream;
