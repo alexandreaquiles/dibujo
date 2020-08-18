@@ -216,3 +216,5 @@ nbdist/
 *.txt
 *.jpg
 *.png
+*.JPG
+*.PNG
