@@ -3,7 +3,7 @@ package dibujo.cli;
 import dibujo.cli.commands.Command;
 import dibujo.cli.commands.CommandParameters;
 import dibujo.cli.commands.Commands;
-import dibujo.cli.out.CanvasAsText;
+import dibujo.cli.output.CanvasAsText;
 import dibujo.core.Canvas;
 
 import java.io.InputStream;
