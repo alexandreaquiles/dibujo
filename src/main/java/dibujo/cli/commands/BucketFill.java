@@ -27,7 +27,8 @@ public class BucketFill implements Command {
             int startingY = Integer.parseInt(matcher.group(2));
             String colorCharacter = matcher.group(3);
 
-            canvas.fill(startingX, startingY, colorCharacter);
+            dibujo.core.BucketFill bucketFill = new dibujo.core.BucketFill(startingX, startingY, colorCharacter);
+            bucketFill.fillIn(canvas);
         } else {
             throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");
         }

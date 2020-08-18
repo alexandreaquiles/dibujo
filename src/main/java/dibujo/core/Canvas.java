@@ -49,35 +49,7 @@ public class Canvas implements Iterable<Position> {
         getPosition(x+1, y+1).fill();
     }
 
-    public void fill(int startingX, int startingY, String fillColor) {
-        Position positionToFill = new Position(startingX, startingY);
-        fill(positionToFill, fillColor, new HashSet<>());
-    }
 
-    private void fill(Position positionToFill, String fillColor, Set<Position> visited) {
-        if (visited.contains(positionToFill) || positionToFill.getX() <= 0 || positionToFill.getX() > this.width || positionToFill.getY() <= 0 || positionToFill.getY() > this.height) {
-            return;
-        }
-
-        Position canvasPosition = positions[positionToFill.getY()-1][positionToFill.getX()-1];
-        if (canvasPosition.isFilled()) {
-            return;
-        }
-        canvasPosition.changeColor(fillColor);
-        visited.add(positionToFill);
-
-        fill(positionToFill.leftUp(), fillColor, visited);
-        fill(positionToFill.centerUp(), fillColor, visited);
-        fill(positionToFill.rightUp(), fillColor, visited);
-
-        fill(positionToFill.right(), fillColor, visited);
-        fill(positionToFill.rightDown(), fillColor, visited);
-
-        fill(positionToFill.centerDown(), fillColor, visited);
-
-        fill(positionToFill.leftDown(), fillColor, visited);
-        fill(positionToFill.left(), fillColor, visited);
-    }
 
     @Override
     public Iterator<Position> iterator() {
