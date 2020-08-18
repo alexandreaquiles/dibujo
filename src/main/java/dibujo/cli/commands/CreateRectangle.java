@@ -1,6 +1,7 @@
 package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
+import dibujo.core.Rectangle;
 
 import java.io.PrintStream;
 import java.util.regex.Matcher;
@@ -27,7 +28,8 @@ public class CreateRectangle implements Command {
             int lowerRightCornerX = Integer.parseInt(matcher.group(3));
             int lowerRightCornerY = Integer.parseInt(matcher.group(4));
 
-            canvas.createNewRectangle(upperLeftCornerX, upperLeftCornerY, lowerRightCornerX, lowerRightCornerY);
+            Rectangle rectangle = new Rectangle(upperLeftCornerX, upperLeftCornerY, lowerRightCornerX, lowerRightCornerY);
+            rectangle.createIn(canvas);
         } else {
             throw new RuntimeException("Invalid parameters for the create new rectangle command. Should be: "+ CODE +" <upper left corner x> <upper left corner y> <lower right corner x> <lower right corner y>");
         }
