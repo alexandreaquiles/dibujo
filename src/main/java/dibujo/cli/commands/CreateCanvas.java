@@ -1,4 +1,4 @@
-package dibujo.cli;
+package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
@@ -9,7 +9,7 @@ public class CreateCanvas {
     public CreateCanvas() {
     }
 
-    Canvas createCanvas(String line) {
+    public Canvas createCanvas(String line) {
         Matcher matcher = Pattern.compile("^C (\\d+) (\\d+)$").matcher(line);
         if (matcher.find()) {
             int width = Integer.parseInt(matcher.group(1));

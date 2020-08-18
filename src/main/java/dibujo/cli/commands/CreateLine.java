@@ -1,4 +1,4 @@
-package dibujo.cli;
+package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
@@ -9,7 +9,7 @@ public class CreateLine {
     public CreateLine() {
     }
 
-    void createLine(String line, Canvas canvas) {
+    public void createLine(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new line.");
         }

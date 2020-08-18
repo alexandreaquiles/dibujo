@@ -1,4 +1,4 @@
-package dibujo.cli;
+package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 import dibujo.core.Position;
@@ -10,7 +10,7 @@ public class BucketFill {
     public BucketFill() {
     }
 
-    void bucketFill(String line, Canvas canvas) {
+    public void bucketFill(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");
         }

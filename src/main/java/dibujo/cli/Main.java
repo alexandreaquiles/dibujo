@@ -1,5 +1,6 @@
 package dibujo.cli;
 
+import dibujo.cli.commands.*;
 import dibujo.cli.out.CanvasAsText;
 import dibujo.core.Canvas;
 
@@ -50,10 +51,6 @@ public class Main {
                 }
             }
         }
-    }
-
-    private Canvas createCanvas(String line) {
-        return createCanvas.createCanvas(line);
     }
 
     public static void main(String[] args) {
