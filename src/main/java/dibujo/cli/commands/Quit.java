@@ -5,11 +5,11 @@ import dibujo.core.Canvas;
 import java.io.PrintStream;
 
 public class Quit implements Command {
-    private static final String QUIT = "Q";
+    private static final String CODE = "Q";
 
     @Override
     public boolean accept(String line) {
-        return line.startsWith(QUIT);
+        return line.startsWith(CODE);
     }
 
     @Override

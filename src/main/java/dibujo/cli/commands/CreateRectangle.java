@@ -7,11 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateRectangle implements Command {
-    private static final String CREATE_RECTANGLE = "R";
+    private static final String CODE = "R";
 
     @Override
     public boolean accept(String line) {
-        return line.startsWith(CREATE_RECTANGLE);
+        return line.startsWith(CODE);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class CreateRectangle implements Command {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new rectangle.");
         }
 
-        Matcher matcher = Pattern.compile("^R (\\d+) (\\d+) (\\d+) (\\d+)$").matcher(line);
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\d+) (\\d+)$").matcher(line);
         if (matcher.find()) {
             int upperLeftCornerX = Integer.parseInt(matcher.group(1));
             int upperLeftCornerY = Integer.parseInt(matcher.group(2));
@@ -29,7 +29,7 @@ public class CreateRectangle implements Command {
 
             canvas.createNewRectangle(upperLeftCornerX, upperLeftCornerY, lowerRightCornerX, lowerRightCornerY);
         } else {
-            throw new RuntimeException("Invalid parameters for the create new rectangle command. Should be: L <upper left corner x> <upper left corner y> <lower right corner x> <lower right corner y>");
+            throw new RuntimeException("Invalid parameters for the create new rectangle command. Should be: "+ CODE +" <upper left corner x> <upper left corner y> <lower right corner x> <lower right corner y>");
         }
         return canvas;
     }

@@ -8,11 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BucketFill implements Command {
-    private static final String BUCKET_FILL = "B";
+    private static final String CODE = "B";
 
     @Override
     public boolean accept(String line) {
-        return line.startsWith(BUCKET_FILL);
+        return line.startsWith(CODE);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class BucketFill implements Command {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");
         }
 
-        Matcher matcher = Pattern.compile("^B (\\d+) (\\d+) (\\w+)$").matcher(line);
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\w+)$").matcher(line);
         if (matcher.find()) {
             int startingX = Integer.parseInt(matcher.group(1));
             int startingY = Integer.parseInt(matcher.group(2));
@@ -30,7 +30,7 @@ public class BucketFill implements Command {
             Position startingPositionToFill = new Position(startingX, startingY);
             canvas.fill(startingPositionToFill, colorCharacter);
         } else {
-            throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: B <starting x> <starting y> <color>");
+            throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");
         }
         return canvas;
     }
