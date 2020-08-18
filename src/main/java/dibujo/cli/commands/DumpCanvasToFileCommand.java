@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DumpCanvasToFile implements Command {
+public class DumpCanvasToFileCommand implements Command {
 
     public static final String DUMP_TO_FILE = "D";
 
@@ -19,7 +19,10 @@ public class DumpCanvasToFile implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
+    public Canvas execute(CommandParameters commandParameters) {
+        Canvas canvas = commandParameters.getCanvas();
+        String line = commandParameters.getLine();
+
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before dumping it.");
         }
@@ -28,8 +31,9 @@ public class DumpCanvasToFile implements Command {
             String filename = matcher.group(1);
             CanvasAsText canvasAsText = new CanvasAsText();
             try(FileOutputStream fos = new FileOutputStream(filename);
-                PrintStream ps = new PrintStream(fos)) {
-                canvasAsText.draw(ps, canvas);
+                PrintStream out = new PrintStream(fos)) {
+                String text = canvasAsText.draw(canvas);
+                out.print(text);
             } catch (IOException e) {
                 throw new RuntimeException("Error dumping to file...", e);
             }
