@@ -2,9 +2,7 @@ package dibujo.cli.commands;
 
 import dibujo.cli.out.CanvasAsText;
 import dibujo.core.Canvas;
-import dibujo.core.Position;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
