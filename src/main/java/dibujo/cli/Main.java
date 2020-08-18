@@ -6,8 +6,6 @@ import dibujo.core.Canvas;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
 
@@ -17,6 +15,7 @@ public class Main {
     private final CreateLine createLine = new CreateLine();
     private final CreateRectangle createRectangle = new CreateRectangle();
     private final BucketFill bucketFill = new BucketFill();
+    private final CreateCanvas createCanvas = new CreateCanvas();
 
     private Canvas canvas;
 
@@ -28,7 +27,7 @@ public class Main {
                 try {
 
                     if (line.startsWith("C")) {
-                        createCanvas(line);
+                        canvas = createCanvas.createCanvas(line);
                     } else if (line.startsWith("L")) {
                         createLine.createLine(line, this.canvas);
                     } else if (line.startsWith("R")) {
@@ -53,16 +52,8 @@ public class Main {
         }
     }
 
-    private void createCanvas(String line) {
-        Matcher matcher = Pattern.compile("^C (\\d+) (\\d+)$").matcher(line);
-        if (matcher.find()) {
-            int width = Integer.parseInt(matcher.group(1));
-            int height = Integer.parseInt(matcher.group(2));
-
-            canvas = new Canvas(width, height);
-        } else {
-            throw new RuntimeException("Invalid parameters for the create new canvas command. Should be: C <width> <height>");
-        }
+    private Canvas createCanvas(String line) {
+        return createCanvas.createCanvas(line);
     }
 
     public static void main(String[] args) {
