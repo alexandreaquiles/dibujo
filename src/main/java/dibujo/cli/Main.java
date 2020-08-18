@@ -29,10 +29,7 @@ public class Main {
                 String line = scanner.nextLine();
                 try {
 
-                    Command command = commands.stream()
-                            .filter(c -> c.accept(line))
-                            .findFirst()
-                            .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
+                    Command command = getCommandByLine(line);
 
                     canvas = command.execute(out, err, line, this.canvas);
 
@@ -46,6 +43,14 @@ public class Main {
                 }
             }
         }
+    }
+
+    private Command getCommandByLine(String line) {
+        Command command = commands.stream()
+                .filter(c -> c.accept(line))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
+        return command;
     }
 
     public static void main(String[] args) {
