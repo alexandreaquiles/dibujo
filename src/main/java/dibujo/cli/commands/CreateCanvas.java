@@ -2,6 +2,7 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
+import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class CreateCanvas {
         return line.startsWith(CREATE_CANVAS);
     }
 
-    public Canvas createCanvas(String line) {
+    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
         Matcher matcher = Pattern.compile("^C (\\d+) (\\d+)$").matcher(line);
         if (matcher.find()) {
             int width = Integer.parseInt(matcher.group(1));

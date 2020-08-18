@@ -29,7 +29,7 @@ public class Main {
 
                     if (createCanvas.accept(line)) {
 
-                        canvas = createCanvas.createCanvas(line);
+                        canvas = createCanvas.execute(out, err, line, this.canvas);
 
                     } else if (createLine.accept(line)) {
 
@@ -45,7 +45,7 @@ public class Main {
 
                     } else if (quit.accept(line)) {
 
-                        quit.quit(out);
+                        quit.execute(out, err, line, this.canvas);
 
                     } else {
                         err.println("Invalid command: " + line + "\n");

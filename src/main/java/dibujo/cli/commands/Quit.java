@@ -1,5 +1,7 @@
 package dibujo.cli.commands;
 
+import dibujo.core.Canvas;
+
 import java.io.PrintStream;
 
 public class Quit {
@@ -9,7 +11,7 @@ public class Quit {
         return line.startsWith(QUIT);
     }
 
-    public void quit(PrintStream out) {
+    public void execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
         out.println("Bye bye!");
         System.exit(0);
     }
