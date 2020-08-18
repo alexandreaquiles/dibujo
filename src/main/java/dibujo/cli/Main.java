@@ -1,24 +1,16 @@
 package dibujo.cli;
 
-import dibujo.cli.commands.*;
+import dibujo.cli.commands.Command;
 import dibujo.cli.out.CanvasAsText;
 import dibujo.core.Canvas;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private final CanvasAsText canvasAsText = new CanvasAsText();
-
-    List<Command> commands = List.of(
-            new CreateCanvas(),
-            new CreateLine(),
-            new CreateRectangle(),
-            new BucketFill(),
-            new Quit());
 
     private Canvas canvas;
 
@@ -29,7 +21,7 @@ public class Main {
                 String line = scanner.nextLine();
                 try {
 
-                    Command command = getCommandByLine(line);
+                    Command command = Command.getCommandByLine(line);
 
                     canvas = command.execute(out, err, line, this.canvas);
 
@@ -43,14 +35,6 @@ public class Main {
                 }
             }
         }
-    }
-
-    private Command getCommandByLine(String line) {
-        Command command = commands.stream()
-                .filter(c -> c.accept(line))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
-        return command;
     }
 
     public static void main(String[] args) {
