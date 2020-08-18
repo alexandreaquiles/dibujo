@@ -1,9 +1,8 @@
 package dibujo.cli.commands;
 
-import dibujo.cli.out.CanvasAsImage;
+import dibujo.cli.output.CanvasAsImage;
 import dibujo.core.Canvas;
 
-import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
