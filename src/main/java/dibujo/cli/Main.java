@@ -1,5 +1,6 @@
 package dibujo.cli;
 
+import dibujo.cli.out.CanvasAsText;
 import dibujo.core.Canvas;
 import dibujo.core.Position;
 
