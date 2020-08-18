@@ -49,7 +49,8 @@ public class Canvas implements Iterable<Position> {
         getPosition(x+1, y+1).fill();
     }
 
-    public void fill(Position positionToFill, String fillColor) {
+    public void fill(int startingX, int startingY, String fillColor) {
+        Position positionToFill = new Position(startingX, startingY);
         fill(positionToFill, fillColor, new HashSet<>());
     }
 

@@ -27,8 +27,7 @@ public class BucketFill implements Command {
             int startingY = Integer.parseInt(matcher.group(2));
             String colorCharacter = matcher.group(3);
 
-            Position startingPositionToFill = new Position(startingX, startingY);
-            canvas.fill(startingPositionToFill, colorCharacter);
+            canvas.fill(startingX, startingY, colorCharacter);
         } else {
             throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");
         }
