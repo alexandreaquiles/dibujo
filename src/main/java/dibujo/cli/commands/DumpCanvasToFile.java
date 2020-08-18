@@ -35,7 +35,7 @@ public class DumpCanvasToFile implements Command {
             }
 
         } else {
-            throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: " + DUMP_TO_FILE +" <filename>");
+            throw new RuntimeException("Invalid parameters for the dump to file command. Should be: " + DUMP_TO_FILE +" <filename>");
         }
 
         return canvas;
