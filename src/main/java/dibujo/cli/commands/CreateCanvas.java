@@ -2,7 +2,6 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
-import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,8 +14,8 @@ public class CreateCanvas implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
-        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+)$").matcher(line);
+    public Canvas execute(CommandParameters commandParameters) {
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+)$").matcher(commandParameters.getLine());
         if (matcher.find()) {
             int width = Integer.parseInt(matcher.group(1));
             int height = Integer.parseInt(matcher.group(2));

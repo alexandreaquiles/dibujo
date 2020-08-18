@@ -1,9 +1,7 @@
 package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
-import dibujo.core.Position;
 
-import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,22 +14,22 @@ public class BucketFill implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
-        if (canvas == null) {
+    public Canvas execute(CommandParameters commandParameters) {
+        if (commandParameters.getCanvas() == null) {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");
         }
 
-        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\w+)$").matcher(line);
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\w+)$").matcher(commandParameters.getLine());
         if (matcher.find()) {
             int startingX = Integer.parseInt(matcher.group(1));
             int startingY = Integer.parseInt(matcher.group(2));
             String colorCharacter = matcher.group(3);
 
             dibujo.core.BucketFill bucketFill = new dibujo.core.BucketFill(startingX, startingY, colorCharacter);
-            bucketFill.fillIn(canvas);
+            bucketFill.fillIn(commandParameters.getCanvas());
         } else {
             throw new RuntimeException("Invalid parameters for the bucket fill command. Should be: "+ CODE +" <starting x> <starting y> <color>");
         }
-        return canvas;
+        return commandParameters.getCanvas();
     }
 }

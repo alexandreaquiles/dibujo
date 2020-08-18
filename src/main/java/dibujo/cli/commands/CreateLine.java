@@ -3,7 +3,6 @@ package dibujo.cli.commands;
 import dibujo.core.Canvas;
 import dibujo.core.Line;
 
-import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,11 +15,11 @@ public class CreateLine implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
-        if (canvas == null) {
+    public Canvas execute(CommandParameters commandParameters) {
+        if (commandParameters.getCanvas() == null) {
             throw new RuntimeException("No canvas. You should create a canvas before creating a new line.");
         }
-        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\d+) (\\d+)$").matcher(line);
+        Matcher matcher = Pattern.compile("^"+ CODE +" (\\d+) (\\d+) (\\d+) (\\d+)$").matcher(commandParameters.getLine());
         if (matcher.find()) {
             int startingX = Integer.parseInt(matcher.group(1));
             int startingY = Integer.parseInt(matcher.group(2));
@@ -28,10 +27,10 @@ public class CreateLine implements Command {
             int endingY = Integer.parseInt(matcher.group(4));
 
             Line canvasLine = new Line(startingX, startingY, endingX, endingY);
-            canvasLine.createIn(canvas);
+            canvasLine.createIn(commandParameters.getCanvas());
         } else {
             throw new RuntimeException("Invalid parameters for the create new line command. Should be: "+ CODE +" <starting x> <starting y> <ending x> <ending y>");
         }
-        return canvas;
+        return commandParameters.getCanvas();
     }
 }

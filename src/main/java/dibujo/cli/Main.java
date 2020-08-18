@@ -1,6 +1,7 @@
 package dibujo.cli;
 
 import dibujo.cli.commands.Command;
+import dibujo.cli.commands.CommandParameters;
 import dibujo.cli.commands.Commands;
 import dibujo.cli.out.CanvasAsText;
 import dibujo.core.Canvas;
@@ -24,7 +25,7 @@ public class Main {
 
                     Command command = Commands.getCommandByLine(line);
 
-                    canvas = command.execute(out, err, line, this.canvas);
+                    canvas = command.execute(new CommandParameters(out, err, line, this.canvas));
 
                     String text = canvasAsText.draw(canvas);
                     out.print(text);

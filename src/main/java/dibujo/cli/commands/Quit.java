@@ -2,8 +2,6 @@ package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
 
-import java.io.PrintStream;
-
 public class Quit implements Command {
     private static final String CODE = "Q";
 
@@ -13,9 +11,9 @@ public class Quit implements Command {
     }
 
     @Override
-    public Canvas execute(PrintStream out, PrintStream err, String line, Canvas canvas) {
-        out.println("Bye bye!");
+    public Canvas execute(CommandParameters commandParameters) {
+        commandParameters.getOut().println("Bye bye!");
         System.exit(0);
-        return canvas;
+        return commandParameters.getCanvas();
     }
 }
