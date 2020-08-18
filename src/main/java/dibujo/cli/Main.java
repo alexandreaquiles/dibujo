@@ -6,17 +6,19 @@ import dibujo.core.Canvas;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private final CanvasAsText canvasAsText = new CanvasAsText();
 
-    private final Command quit = new Quit();
-    private final Command createLine = new CreateLine();
-    private final Command createRectangle = new CreateRectangle();
-    private final Command bucketFill = new BucketFill();
-    private final Command createCanvas = new CreateCanvas();
+    List<Command> commands = List.of(
+            new CreateCanvas(),
+            new CreateLine(),
+            new CreateRectangle(),
+            new BucketFill(),
+            new Quit());
 
     private Canvas canvas;
 
@@ -27,29 +29,12 @@ public class Main {
                 String line = scanner.nextLine();
                 try {
 
-                    if (createCanvas.accept(line)) {
+                    Command command = commands.stream()
+                            .filter(c -> c.accept(line))
+                            .findFirst()
+                            .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
 
-                        canvas = createCanvas.execute(out, err, line, this.canvas);
-
-                    } else if (createLine.accept(line)) {
-
-                        createLine.execute(out, err, line, this.canvas);
-
-                    } else if (createRectangle.accept(line)) {
-
-                        createRectangle.execute(out, err, line, this.canvas);
-
-                    } else if (bucketFill.accept(line)) {
-
-                        bucketFill.execute(out, err, line, this.canvas);
-
-                    } else if (quit.accept(line)) {
-
-                        quit.execute(out, err, line, this.canvas);
-
-                    } else {
-                        err.println("Invalid command: " + line + "\n");
-                    }
+                    canvas = command.execute(out, err, line, this.canvas);
 
                     canvasAsText.draw(out, canvas);
 
