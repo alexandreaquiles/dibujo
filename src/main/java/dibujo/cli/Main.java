@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class Main {
 
+    private final Quit quit = new Quit();
     private Canvas canvas;
 
     public void run(InputStream in, PrintStream out, PrintStream err) {
@@ -29,7 +30,7 @@ public class Main {
                     } else if (line.startsWith("B")) {
                         bucketFill(line);
                     } else if (line.startsWith("Q")) {
-                        quit(out);
+                        quit.quit(out);
                     } else {
                         err.println("Invalid command: " + line + "\n");
                     }
@@ -89,11 +90,6 @@ public class Main {
         out.print("-");
 
         out.println();
-    }
-
-    private void quit(PrintStream out) {
-        out.println("Bye bye!");
-        System.exit(0);
     }
 
     private void bucketFill(String line) {
