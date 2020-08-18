@@ -15,11 +15,9 @@ public interface Command {
             new Quit());
 
     static Command getCommandByLine(String line) {
-        Command command = commands.stream()
-                                  .filter(c -> c.accept(line))
-                                  .findFirst()
-                                  .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
-        return command;
+        return commands.stream().filter(c -> c.accept(line))
+                                .findFirst()
+                                .orElseThrow(() -> new IllegalArgumentException("Invalid command: " + line));
     }
 
     boolean accept(String line);
