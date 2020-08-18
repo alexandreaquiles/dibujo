@@ -6,13 +6,15 @@ import dibujo.core.Position;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BucketFill {
+public class BucketFill implements Command {
     private static final String BUCKET_FILL = "B";
 
+    @Override
     public boolean accept(String line) {
         return line.startsWith(BUCKET_FILL);
     }
 
+    @Override
     public void execute(String line, Canvas canvas) {
         if (canvas == null) {
             throw new RuntimeException("No canvas. You should create a canvas before filling it.");

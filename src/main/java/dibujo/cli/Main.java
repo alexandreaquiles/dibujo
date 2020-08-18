@@ -13,9 +13,9 @@ public class Main {
     private final CanvasAsText canvasAsText = new CanvasAsText();
 
     private final Quit quit = new Quit();
-    private final CreateLine createLine = new CreateLine();
+    private final Command createLine = new CreateLine();
     private final Command createRectangle = new CreateRectangle();
-    private final BucketFill bucketFill = new BucketFill();
+    private final Command bucketFill = new BucketFill();
     private final CreateCanvas createCanvas = new CreateCanvas();
 
     private Canvas canvas;
