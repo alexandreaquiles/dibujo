@@ -45,24 +45,8 @@ public class Canvas implements Iterable<Position> {
         return positions[y-1][x-1];
     }
 
-    public void createNewLine(int startingX, int startingY, int endingX, int endingY) {
-        if (startingX <= 0 || startingY <= 0 || endingX <= 0 || endingY <= 0) {
-            throw new RuntimeException("Invalid parameters: the starting and ending coordinates should be greater than zero. Given parameters: " + this);
-        }
-
-        if (startingX != endingX && startingY != endingY ) {
-            throw new RuntimeException("Invalid parameters: currently only horizontal or vertical lines are supported. Given parameters: " + this);
-        }
-
-        if (startingX > width ||  endingX > width || startingY > height || endingY > height) {
-            throw new RuntimeException("Invalid parameters: the line coordinates should not be off limits. Given parameters: " + this + " starting(X=" + startingX + ", Y=" + startingY + ") ending(X="+endingX+ ", Y=" + endingY + ")");
-        }
-
-        for (int y = startingY-1; y <= endingY-1; y++) {
-            for (int x = startingX-1; x <= endingX-1; x++) {
-                this.positions[y][x].fill();
-            }
-        }
+    public void fillPosition(int x, int y) {
+        getPosition(x+1, y+1).fill();
     }
 
     public void createNewRectangle(int upperLeftCornerX, int upperLeftCornerY, int lowerRightCornerX, int lowerRightCornerY) {
@@ -142,4 +126,5 @@ public class Canvas implements Iterable<Position> {
             }
         };
     }
+
 }

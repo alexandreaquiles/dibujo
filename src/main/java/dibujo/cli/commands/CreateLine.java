@@ -1,6 +1,7 @@
 package dibujo.cli.commands;
 
 import dibujo.core.Canvas;
+import dibujo.core.Line;
 
 import java.io.PrintStream;
 import java.util.regex.Matcher;
@@ -26,7 +27,8 @@ public class CreateLine implements Command {
             int endingX = Integer.parseInt(matcher.group(3));
             int endingY = Integer.parseInt(matcher.group(4));
 
-            canvas.createNewLine(startingX, startingY, endingX, endingY);
+            Line canvasLine = new Line(startingX, startingY, endingX, endingY);
+            canvasLine.createIn(canvas);
         } else {
             throw new RuntimeException("Invalid parameters for the create new line command. Should be: "+ CODE +" <starting x> <starting y> <ending x> <ending y>");
         }
